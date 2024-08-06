@@ -1,9 +1,9 @@
 from .views import MenuView
-from django.urls import path
+from django.urls import re_path
 
 app_name = 'app'
 
 urlpatterns = [
-    path('', MenuView.as_view(), name='menu'),
+    re_path(r'^menu/(?P<path>[a-zA-Z\/]*)/$', MenuView.as_view(), name='menu'),
 
 ]
