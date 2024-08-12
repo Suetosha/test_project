@@ -10,5 +10,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 @admin.register(Item)
 class MenuItemAdmin(admin.ModelAdmin):
-    pass
-
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        form.base_fields["parent"].required = False
+        return form
